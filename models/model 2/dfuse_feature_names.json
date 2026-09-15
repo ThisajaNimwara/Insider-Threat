@@ -1,0 +1,1 @@
+["hour_of_day", "day_of_week", "is_after_hours", "is_weekend", "bytes_transferred_log", "has_usb_event", "has_file_access", "has_email_event", "logon_count_proxy", "on_pip_flag", "resigned_flag", "prior_incidents_count", "known_baseline_deviation"]

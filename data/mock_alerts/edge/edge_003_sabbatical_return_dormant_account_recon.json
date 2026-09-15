@@ -1,0 +1,83 @@
+{
+  "user_id": "EMP_031",
+  "event_type": "logon",
+  "timestamp": "2024-10-07T08:03:00Z",
+  "action": "Account login from new device + new geography, followed by 6-hour bulk read of 4 internal systems with 2.1GB data accessed",
+  "source_ip": "196.201.214.67",
+  "destination": "internal-portal.corp / confluence.corp / gitlab.corp / datawarehouse.corp",
+  "bytes_transferred": 2254857830,
+  "after_hours": false,
+  "device_id": "DEVICE_UNKNOWN_NEW_ENROLLMENT",
+  "extra": {
+    "login_geography": "Nairobi, Kenya",
+    "previous_login_geography": "London, UK",
+    "previous_login_ts": "2024-04-01T17:45:00Z",
+    "gap_since_last_login_days": 188,
+    "device_enrolled_mdm": false,
+    "device_enrollment_requested_ts": "2024-10-07T07:58:00Z",
+    "mfa_passed": true,
+    "mfa_method": "TOTP authenticator",
+    "new_device_flag": true,
+    "impossible_travel_flag": false,
+    "impossible_travel_note": "188-day gap — not impossible travel, no prior session to conflict with",
+    "systems_accessed": [
+      "Confluence (internal wiki) — 847 pages read",
+      "GitLab — 134 repos browsed, 0 cloned",
+      "Data Warehouse (read-only role) — 12 dashboards loaded",
+      "Jira — 423 tickets viewed"
+    ],
+    "data_downloaded": false,
+    "files_downloaded_count": 0,
+    "clipboard_exfil_detected": false,
+    "usb_activity": false,
+    "email_sent_count": 0,
+    "sabbatical_record": {
+      "type": "approved_personal_sabbatical",
+      "approved_by": "VP Engineering — James Oduya",
+      "start_date": "2024-04-02",
+      "end_date": "2024-10-06",
+      "return_date_confirmed": "2024-10-07",
+      "sabbatical_country": "Kenya (family)",
+      "account_suspended_during_leave": false,
+      "account_should_have_been_suspended": true,
+      "it_suspension_ticket": "IT-20240401-088",
+      "it_suspension_status": "CLOSED_WITHOUT_ACTION",
+      "it_failure_note": "Ticket closed by mistake — account was never suspended during 6-month sabbatical"
+    },
+    "hr_context": {
+      "on_pip": false,
+      "resigned": false,
+      "role": "Staff Engineer",
+      "department": "Engineering",
+      "clearance_level": "elevated",
+      "termination_date": null,
+      "performance_rating_last_cycle": "exceeds_expectations",
+      "tenure_years": 7.2
+    },
+    "incident_history": {
+      "prior_incidents": 0,
+      "known_baseline_deviation": false
+    },
+    "peer_corroboration": {
+      "slack_message_from_manager": "Welcome back Amara!! So glad you're back, can't wait to catch up. Your laptop will be ready by noon.",
+      "slack_ts": "2024-10-07T08:10:00Z",
+      "team_calendar_entry": "Amara Return from Sabbatical — All Hands catch-up 14:00",
+      "hr_system_return_date": "2024-10-07"
+    },
+    "risk_amplifiers": {
+      "account_active_for_6_months_unsupervised": true,
+      "new_unenrolled_device": true,
+      "login_from_non_corporate_geography": true,
+      "no_prior_kenya_logins_on_record": true,
+      "bulk_system_read_first_session_back": true,
+      "elevated_clearance_never_reviewed_during_leave": true,
+      "dlp_note": "Read-only bulk access does not trigger standard DLP rules — 2.1GB read with zero bytes downloaded is a policy blind spot"
+    },
+    "dlp_triggered": false,
+    "dlp_action": "none",
+    "dlp_note": "No DLP rule covers bulk READ-only access — only write/transfer actions are monitored"
+  },
+  "_scenario_label": "AMBIGUOUS",
+  "_difficulty": "VERY_HARD",
+  "_why_hard": "Every human signal says BENIGN: manager welcomed her back on Slack, HR confirms the return date, 7-year tenure, zero prior incidents, zero downloads, zero USB, zero emails sent. But the system signals are alarming: account was never suspended for 6 months, login from a country with no prior history, brand new unenrolled device, elevated clearance unreviewed during leave, and 2.1GB of bulk read across 4 sensitive systems in one session with ZERO DLP coverage because read-only access is a policy blind spot. The threat model is not 'Amara is malicious' — it is 'did someone else use her dormant credentials for 6 months, and is this first-session bulk read a reconnaissance sweep?' The correct verdict is INCONCLUSIVE with an urgent IT ticket to review the 188-day account activity log, not a threat escalation or a benign pass."
+}

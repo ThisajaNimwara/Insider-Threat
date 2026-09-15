@@ -1,0 +1,74 @@
+{
+  "display_name": "ML DFuse \u2014 CatBoost Risk Profile Model (M1 v2)",
+  "model_type": "CatBoost Classifier (isotonic-calibrated) \u2014 physical access + risk profile signals",
+  "training_dataset": "insider_threat_clean_dataset.csv",
+  "trained_at": "2026-06-21T08:55:25.924434+00:00",
+  "train_samples": 83029,
+  "val_samples": 17792,
+  "test_samples": 17793,
+  "positive_class_ratio": 0.05383850135734399,
+  "scale_pos_weight": 17.574720357941835,
+  "operating_threshold": 0.35,
+  "metrics": {
+    "roc_auc": 0.9897012511835059,
+    "pr_auc": 0.8728795523081145,
+    "precision_at_threshold": 0.7094972067039106,
+    "recall_at_threshold": 0.9279749478079332,
+    "f1_at_threshold": 0.804161013116237,
+    "cv_mean_pr_auc": 0.8691966080519116,
+    "cv_std_pr_auc": 0.011912826819111882
+  },
+  "top_features": [
+    {
+      "feature": "employee_position",
+      "importance": 0.1729
+    },
+    {
+      "feature": "employee_origin_country",
+      "importance": 0.1424
+    },
+    {
+      "feature": "seniority_bucket",
+      "importance": 0.1115
+    },
+    {
+      "feature": "employee_department",
+      "importance": 0.1075
+    },
+    {
+      "feature": "employee_seniority_years",
+      "importance": 0.0862
+    },
+    {
+      "feature": "employee_campus",
+      "importance": 0.05
+    },
+    {
+      "feature": "employee_classification",
+      "importance": 0.0469
+    },
+    {
+      "feature": "total_files_burned",
+      "importance": 0.034
+    },
+    {
+      "feature": "print_pages_log",
+      "importance": 0.0324
+    },
+    {
+      "feature": "total_printed_pages",
+      "importance": 0.031
+    }
+  ],
+  "best_hyperparameters": {
+    "iterations": 683,
+    "depth": 10,
+    "learning_rate": 0.09720976877763804,
+    "l2_leaf_reg": 3.274352865931256,
+    "border_count": 79,
+    "random_strength": 1.0978294647719242,
+    "bagging_temperature": 0.6227160543356317
+  },
+  "weight_in_ensemble": 0.25,
+  "notes": "Dropped constant column 'late_exit_flag' (zero variance across full dataset). Added 13 engineered ratio/interaction features. Class-weighted via scale_pos_weight instead of SMOTE to preserve categorical realism. Isotonic-calibrated so output can be blended directly as a probability in the weighted ensemble scorer."
+}

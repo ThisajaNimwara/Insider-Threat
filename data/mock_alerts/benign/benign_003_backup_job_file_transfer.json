@@ -1,0 +1,28 @@
+{
+  "user_id": "EMP_009",
+  "event_type": "file_access",
+  "timestamp": "2024-06-16T01:00:07Z",
+  "action": "Automated nightly backup job — full incremental snapshot to offsite NAS",
+  "source_ip": "10.0.0.10",
+  "destination": "nas-backup-02.corp.internal:/vol/nightly/2024-06-16/",
+  "bytes_transferred": 10737418240,
+  "after_hours": true,
+  "device_id": "SVC_BACKUP_AGENT_V2",
+  "extra": {
+    "job_type": "scheduled_incremental_backup",
+    "cron_schedule": "0 1 * * *",
+    "source_volumes": [
+      "/data/finance",
+      "/data/engineering",
+      "/data/hr"
+    ],
+    "compression": "gzip_level_6",
+    "encryption": "AES-256",
+    "backup_policy_ref": "POL-BACKUP-003",
+    "previous_run_ts": "2024-06-15T01:00:05Z",
+    "job_status": "COMPLETED_SUCCESS",
+    "verified_hash": true
+  },
+  "_scenario_label": "BENIGN",
+  "_scenario_notes": "Fully automated backup job running on its documented nightly schedule. 10GB transfer is normal for this job. Account is a service account (Backup Operator role), destination is the corporate NAS, and the job has identical history for 90+ consecutive nights."
+}

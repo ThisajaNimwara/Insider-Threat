@@ -1,0 +1,102 @@
+{
+  "user_id": "EMP_005",
+  "event_type": "email_send",
+  "timestamp": "2024-11-18T11:47:00Z",
+  "action": "Forwarded sensitive payroll, M&A, and board-level financial documents to personal email address across 23 separate send events over 6-week period — current event is the 23rd",
+  "source_ip": "10.0.5.67",
+  "destination": "external:m.richardson.private@protonmail.com",
+  "bytes_transferred": 8388608,
+  "after_hours": false,
+  "device_id": "LAPTOP_EMP005_WIN11",
+  "extra": {
+    "recipient_email": "m.richardson.private@protonmail.com",
+    "recipient_domain": "protonmail.com",
+    "recipient_domain_type": "end-to-end encrypted personal email — forensically opaque after send",
+    "email_subject": "FW: November payroll run — final sign-off",
+    "attachment_names": [
+      "payroll_nov2024_ALL_EMPLOYEES_FINAL.xlsx",
+      "bonus_pool_allocation_exec_CONFIDENTIAL.xlsx"
+    ],
+    "attachment_sensitivity": "RESTRICTED — contains full salary, bonus, and bank account data for 847 employees",
+    "current_event_number": 23,
+    "total_campaign_duration_days": 41,
+    "campaign_start_date": "2024-10-08",
+    "all_send_events": [
+      {"date": "2024-10-08", "subject": "FW: Q3 board pack FINAL", "size_mb": 14.2, "sensitivity": "BOARD_CONFIDENTIAL"},
+      {"date": "2024-10-11", "subject": "FW: Acquisition target NDA — Project Falcon", "size_mb": 2.1, "sensitivity": "RESTRICTED"},
+      {"date": "2024-10-15", "subject": "FW: October payroll — draft", "size_mb": 9.4, "sensitivity": "RESTRICTED"},
+      {"date": "2024-10-17", "subject": "FW: CFO review — cost reduction options", "size_mb": 6.8, "sensitivity": "BOARD_CONFIDENTIAL"},
+      {"date": "2024-10-19", "subject": "FW: Project Falcon valuation model v3", "size_mb": 18.3, "sensitivity": "RESTRICTED"},
+      {"date": "2024-10-22", "subject": "FW: Headcount reduction scenario modelling", "size_mb": 5.5, "sensitivity": "BOARD_CONFIDENTIAL"},
+      {"date": "2024-10-24", "subject": "FW: ESOP pool — dilution analysis", "size_mb": 4.1, "sensitivity": "RESTRICTED"},
+      {"date": "2024-10-28", "subject": "FW: Investor update deck — Nov board meeting", "size_mb": 22.7, "sensitivity": "BOARD_CONFIDENTIAL"},
+      {"date": "2024-10-31", "subject": "FW: October payroll FINAL", "size_mb": 9.6, "sensitivity": "RESTRICTED"},
+      {"date": "2024-11-04", "subject": "FW: Project Falcon — due diligence Q&A responses", "size_mb": 11.2, "sensitivity": "RESTRICTED"},
+      {"date": "2024-11-05", "subject": "FW: Exec compensation review FY2025", "size_mb": 3.8, "sensitivity": "BOARD_CONFIDENTIAL"},
+      {"date": "2024-11-06", "subject": "FW: Term sheet — Project Falcon DRAFT", "size_mb": 7.4, "sensitivity": "RESTRICTED"},
+      {"date": "2024-11-07", "subject": "FW: November board pack DRAFT", "size_mb": 19.1, "sensitivity": "BOARD_CONFIDENTIAL"},
+      {"date": "2024-11-08", "subject": "FW: Layoff comms plan — DO NOT DISTRIBUTE", "size_mb": 2.2, "sensitivity": "BOARD_CONFIDENTIAL"},
+      {"date": "2024-11-11", "subject": "FW: Cap table — post-acquisition dilution", "size_mb": 5.9, "sensitivity": "RESTRICTED"},
+      {"date": "2024-11-12", "subject": "FW: CFO sign-off — Project Falcon final bid", "size_mb": 8.8, "sensitivity": "RESTRICTED"},
+      {"date": "2024-11-13", "subject": "FW: All-hands script — acquisition announcement", "size_mb": 1.4, "sensitivity": "BOARD_CONFIDENTIAL"},
+      {"date": "2024-11-14", "subject": "FW: Wire transfer instructions — escrow account", "size_mb": 0.8, "sensitivity": "RESTRICTED"},
+      {"date": "2024-11-15", "subject": "FW: Employee retention bonuses post-acquisition", "size_mb": 4.3, "sensitivity": "RESTRICTED"},
+      {"date": "2024-11-15", "subject": "FW: Q4 revenue forecast — downside scenario", "size_mb": 6.1, "sensitivity": "BOARD_CONFIDENTIAL"},
+      {"date": "2024-11-18", "subject": "FW: November board pack FINAL", "size_mb": 21.4, "sensitivity": "BOARD_CONFIDENTIAL"},
+      {"date": "2024-11-18", "subject": "FW: Acquisition announcement embargo — legal hold", "size_mb": 1.9, "sensitivity": "RESTRICTED"},
+      {"date": "2024-11-18", "subject": "FW: November payroll run — final sign-off", "size_mb": 8.0, "sensitivity": "RESTRICTED"}
+    ],
+    "total_data_exfiltrated_mb": 195.0,
+    "unique_document_categories_leaked": [
+      "Full employee payroll + bank data (3 months)",
+      "Live M&A acquisition (Project Falcon) — term sheet, bid, due diligence",
+      "Board-confidential investor decks (3 full packs)",
+      "Headcount reduction and layoff communications",
+      "Executive compensation",
+      "Wire transfer instructions for escrow",
+      "Post-acquisition legal hold notice"
+    ],
+    "send_pattern": "low-and-slow — 1 to 2 emails per day during business hours, staggered to avoid bulk-send DLP rules",
+    "dlp_triggered_per_event": false,
+    "dlp_triggered_aggregate": false,
+    "dlp_gap_exploited": "DLP rules trigger on single-event volume (>50MB or >5 attachments). Individual sends averaged 8.5MB with 1-2 files each — all below threshold. No aggregate cross-day DLP correlation rule exists.",
+    "detection_method": "Detected by UEBA correlation rule added 2024-11-17: flag any user who forwards to the same personal domain >10 times in 30 days",
+    "days_before_detection_rule_existed": 40,
+    "pip_status": true,
+    "pip_start_date": "2024-09-15",
+    "pip_reason": "Performance concerns and repeated policy non-compliance flagged by CFO office",
+    "pip_outcome_meeting_scheduled": "2024-11-25",
+    "pip_outcome_expected": "termination likely based on HR notes",
+    "hr_context": {
+      "on_pip": true,
+      "resigned": false,
+      "role": "Finance Manager",
+      "department": "Finance",
+      "clearance_level": "elevated",
+      "tenure_years": 3.2,
+      "termination_date": null
+    },
+    "incident_history": {
+      "prior_incidents": 1,
+      "prior_incident_type": "policy_violation",
+      "prior_incident_description": "Shared board pack with external advisor without DLP approval in August 2024",
+      "prior_incident_severity": 0.45,
+      "known_baseline_deviation": false
+    },
+    "legal_exposure": [
+      "GDPR breach — employee PII (847 salary records + bank details) sent to uncontrolled personal email",
+      "MNPI leak — live M&A acquisition details including term sheet and final bid price",
+      "Potential securities law violation — board pack and acquisition timeline shared before public announcement",
+      "Wire fraud risk — escrow wire transfer instructions exfiltrated"
+    ],
+    "motive_indicators": [
+      "PIP started 2024-09-15 — data leak campaign started 2024-10-08 (23 days later)",
+      "Termination meeting scheduled 2024-11-25 — escalation in send frequency in final week",
+      "Prior policy violation for external sharing in August suggests awareness of value of internal documents",
+      "ProtonMail recipient — end-to-end encrypted, no subpoena-accessible server logs"
+    ]
+  },
+  "_scenario_label": "THREAT",
+  "_difficulty": "EASY",
+  "_why_easy": "A deliberate low-and-slow exfiltration campaign spanning 41 days and 23 separate events, all forwarded to the same ProtonMail address, covering payroll PII for 847 employees, a live unannounced M&A acquisition, board packs, headcount reduction plans, and wire transfer instructions. Motive is clear: PIP started 23 days before the campaign began, termination meeting is 7 days away. The only reason it wasn't caught sooner is a DLP gap — individual sends were kept below the single-event threshold. UEBA correlation finally caught it on day 40. Score should be 0.95+. The legal exposure here is severe: GDPR, MNPI, and potential securities violations."
+}

@@ -1,0 +1,29 @@
+{
+  "user_id": "EMP_042",
+  "event_type": "usb_insert",
+  "timestamp": "2024-06-14T23:45:00Z",
+  "action": "USB mass storage device inserted and 487MB of files copied to removable media",
+  "source_ip": "192.168.1.55",
+  "destination": "USB_REMOVABLE:/",
+  "bytes_transferred": 510656512,
+  "after_hours": true,
+  "device_id": "USB_VID_8564_PID_1000",
+  "extra": {
+    "files_copied": 1847,
+    "file_types_copied": ["py", "ipynb", "sql", "json", "csv", "xlsx", "pdf"],
+    "source_directories": [
+      "/home/emp042/projects/client_models/",
+      "/home/emp042/Documents/proprietary_datasets/",
+      "/mnt/shared/engineering/source_code/"
+    ],
+    "dlp_policy_triggered": true,
+    "dlp_action": "logged_only",
+    "resignation_notice_date": "2024-06-07",
+    "last_working_day": "2024-06-21",
+    "days_since_resignation": 7,
+    "competitor_research_detected": true,
+    "browser_history_flag": "visited linkedin.com/jobs 14 times in last 48h"
+  },
+  "_scenario_label": "THREAT",
+  "_scenario_notes": "High-confidence insider threat. Resigned employee (7 days notice) copying large volume of source code and proprietary datasets to USB at 11:45 PM. DLP triggered but set to log-only. Browser history shows active competitor research. Classic pre-departure data theft pattern."
+}

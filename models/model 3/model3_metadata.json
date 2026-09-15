@@ -1,0 +1,69 @@
+{
+  "display_name": "ML M3 \u2014 Logon Behaviour (Sliding 7-Day Window) v2",
+  "algorithm": "catboost",
+  "trained_on": "logon.csv (CMU-CERT r4.2)",
+  "trained_at": "2026-06-21T13:26:51.640805+00:00",
+  "window_size_days": 7,
+  "n_windows": 283252,
+  "n_users": 4000,
+  "label_strategy": "weak_label = ended_early (account span proxy) OR iso_anomaly (Isolation Forest on window features) \u2014 see Step 7 for plugging in real CERT scenario labels if available",
+  "positive_class_ratio": 0.05052038467513027,
+  "scale_pos_weight": 18.793950284516324,
+  "operating_threshold": 0.2,
+  "metrics": {
+    "roc_auc": 0.9854166378858707,
+    "pr_auc": 0.9699079838204896,
+    "precision_at_threshold": 0.9956751561749159,
+    "recall_at_threshold": 0.9655172413793104,
+    "f1_at_threshold": 0.9803643245800804,
+    "cv_mean_pr_auc": 0.9722648505206793,
+    "cv_std_pr_auc": 0.0017728778517851543
+  },
+  "top_features": [
+    {
+      "feature": "pcs_per_logon",
+      "importance": 0.2592
+    },
+    {
+      "feature": "total_logoffs",
+      "importance": 0.1178
+    },
+    {
+      "feature": "active_days",
+      "importance": 0.1114
+    },
+    {
+      "feature": "total_logons",
+      "importance": 0.102
+    },
+    {
+      "feature": "weekend_logons",
+      "importance": 0.0809
+    },
+    {
+      "feature": "weekend_ratio",
+      "importance": 0.0717
+    },
+    {
+      "feature": "unmatched_logons",
+      "importance": 0.0701
+    },
+    {
+      "feature": "afterhour_ratio",
+      "importance": 0.0672
+    }
+  ],
+  "best_hyperparameters": {
+    "iterations": 695,
+    "depth": 7,
+    "learning_rate": 0.09548737874268229,
+    "l2_leaf_reg": 1.7911665763138869,
+    "scale_pos_weight": 18.793950284516324,
+    "loss_function": "Logloss",
+    "eval_metric": "PRAUC",
+    "random_seed": 42,
+    "early_stopping_rounds": 40
+  },
+  "weight_in_ensemble": 0.25,
+  "notes": "v2 fixes the v1 schema mismatch (all-time per-user aggregates vs per-event live inference) by using rolling 7-day windows instead. Labels are weak/proxy labels combining account-span analysis with Isolation Forest \u2014 NOT ground truth. Replace with real CERT scenario labels in Step 7 if available for a meaningful accuracy jump. Output is a single bundled Pipeline (scaler + classifier) instead of two separate files that can drift out of sync."
+}

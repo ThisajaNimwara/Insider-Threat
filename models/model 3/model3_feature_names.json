@@ -1,0 +1,18 @@
+{
+  "feature_order": [
+    "total_logons",
+    "total_logoffs",
+    "unique_pcs",
+    "logons_afterhour",
+    "weekend_logons",
+    "afterhour_ratio",
+    "weekend_ratio",
+    "unmatched_logons",
+    "avg_daily_logons",
+    "pcs_per_logon",
+    "active_days",
+    "is_low_activity_window"
+  ],
+  "window_size_days": 7,
+  "n_features": 12
+}

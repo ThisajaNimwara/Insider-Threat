@@ -1,0 +1,21 @@
+{
+  "user_id": "EMP_007",
+  "event_type": "file_access",
+  "timestamp": "2024-06-14T14:32:00Z",
+  "action": "Bulk download of marketing assets and product documentation",
+  "source_ip": "10.0.1.45",
+  "destination": "local_drive_D:/product_launch_v3/",
+  "bytes_transferred": 2147483648,
+  "after_hours": false,
+  "device_id": "",
+  "extra": {
+    "files_accessed": 342,
+    "file_types": ["pdf", "pptx", "png", "mp4"],
+    "access_pattern": "sequential_bulk_read",
+    "business_context": "Q3 product launch scheduled for next business day",
+    "manager_approved": true,
+    "ticket_ref": "PROJ-4821"
+  },
+  "_scenario_label": "BENIGN",
+  "_scenario_notes": "Product manager downloading launch materials the day before release. Large volume is expected and manager-approved. No HR risk flags, business hours, no USB, no exfil destination."
+}

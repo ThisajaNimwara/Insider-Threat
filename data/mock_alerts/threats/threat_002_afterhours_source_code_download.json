@@ -1,0 +1,32 @@
+{
+  "user_id": "EMP_099",
+  "event_type": "file_access",
+  "timestamp": "2024-06-13T03:22:00Z",
+  "action": "Mass clone and archive of internal Git repositories to local machine",
+  "source_ip": "192.168.4.210",
+  "destination": "local_drive_C:/Users/emp099/Downloads/repos_backup/",
+  "bytes_transferred": 3145728000,
+  "after_hours": true,
+  "device_id": "",
+  "extra": {
+    "repos_accessed": [
+      "internal/ml-platform-core",
+      "internal/data-pipeline-orchestrator",
+      "internal/customer-scoring-engine",
+      "internal/fraud-detection-v4"
+    ],
+    "repos_cloned_count": 14,
+    "git_commands": ["git clone --mirror", "tar -czf repos_backup.tar.gz"],
+    "archive_created": true,
+    "archive_size_gb": 2.93,
+    "pip_status": true,
+    "pip_start_date": "2024-05-01",
+    "performance_review_scheduled": "2024-06-20",
+    "previous_incidents": 2,
+    "anomaly_score_prior_week": 0.71,
+    "vpn_connection": false,
+    "normal_working_hours": "09:00–17:30"
+  },
+  "_scenario_label": "THREAT",
+  "_scenario_notes": "Data analyst on PIP with 2 prior anomaly incidents bulk-cloning 14 internal ML/fraud detection repositories at 3:22 AM without VPN, creating a compressed archive locally. Performance review scheduled in 7 days. Strong pre-termination data theft indicators."
+}
