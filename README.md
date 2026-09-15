@@ -10,43 +10,40 @@ A multi-agent AI-powered insider threat detection platform designed to analyze S
 The pipeline processes input logs through enrichment, numerical feature extraction, ML/LLM scoring, and report generation:
 
 
-```
-
+```text
 +-----------------------------------------------------------------------+
 |                             SIEM Log Event                            |
 +-----------------------------------------------------------------------+
-|
-v
+                                   |
+                                   v
 +-----------------------------------------------------------------------+
 |                         Backend (FastAPI)                             |
 |  1. Parse & Validate   -> Pydantic LogEvent                           |
 |  2. HR Enrichment      -> SQLite (mock_hr.db, incident_history.db)     |
 |  3. Feature Extractor  -> 13-Dimensional Feature Vector               |
 +-----------------------------------------------------------------------+
-|
-+-------------------------+-------------------------+
-|                         |                         |
-v                         v                         v
+                                   |
+         +-------------------------+-------------------------+
+         |                         |                         |
+         v                         v                         v
 +-----------------+       +-----------------+       +-----------------+
 |  ML Core Agent  |       | ML DFuse Agent  |       |   LLM Agents    |
 | (GMM / IsoForest)       |(Data-Fusion GMM)  |       |(Mistral/Gemini) |
 +-----------------+       +-----------------+       +-----------------+
-|                         |                         |
-+-------------------------+-------------------------+
-|
-v
+         |                         |                         |
+         +-------------------------+-------------------------+
+                                   |
+                                   v
 +-----------------------------------------------------------------------+
 |                            Ensemble Scorer                            |
 |          Weighted Score: Core (35%) + DFuse (25%) + LLMs (40%)        |
 +-----------------------------------------------------------------------+
-|
-v
+                                   |
+                                   v
 +-----------------------------------------------------------------------+
 |                         Frontend (Streamlit)                          |
 |    Upload & Analyze  |  Score Breakdown  |  Executive Report          |
 +-----------------------------------------------------------------------+
-
-```
 
 ---
 
